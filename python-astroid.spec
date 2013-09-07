@@ -3,17 +3,17 @@
 %bcond_without  python2 # Python 2.x module
 %bcond_without  python3 # Python 3.x module
 
-%define	module	logilab-astng
-Summary:	Python Abstract Syntax Tree New Generation
+%define	module	astroid
+Summary:	Rebuild a new abstract syntax tree from Python's ast
 Summary(pl.UTF-8):	Abstrakcyjne drzewa składniowe Pythona nowej generacji
-Name:		python-logilab-astng
-Version:	0.24.3
-Release:	3
+Name:		python-%{module}
+Version:	1.0.0
+Release:	1
 License:	LGPL v2.1+
 Group:		Development/Languages/Python
-Source0:	http://download.logilab.org/pub/astng/%{module}-%{version}.tar.gz
-# Source0-md5:	11d9a33a00790dc30b851afbeaf1fb4e
-URL:		http://www.logilab.org/projects/astng
+Source0:	https://pypi.python.org/packages/source/a/astroid/astroid-1.0.0.tar.gz
+# Source0-md5:	e74430dfbbe09cd18ef75bd76f95425a
+URL:		http://www.astroid.org/
 %if %{with python2}
 BuildRequires:	python-devel
 BuildRequires:	python-modules >= 1:2.5
@@ -32,10 +32,7 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-The aim of this module is to provide a common base representation of
-Python source code for projects such as pychecker, pyreverse,
-pylint... Well, actually the development of this library is essentialy
-governed by pylint's needs.
+The aim of this module is to provide a common base representation of python source code for projects such as pychecker, pyreverse, pylint... Well, actually the development of this library is essentially governed by pylint's needs. It used to be called logilab-astng.
 
 %description -l pl.UTF-8
 Celem tego modułu jest dostarczenie wspólnej bazowej reprezentacji
@@ -51,10 +48,7 @@ Group:		Development/Languages/Python
 Requires:	python3-logilab-common >= 0.53.0
 
 %description -n python3-%{module}
-The aim of this module is to provide a common base representation of
-Python source code for projects such as pychecker, pyreverse,
-pylint... Well, actually the development of this library is essentialy
-governed by pylint's needs.
+The aim of this module is to provide a common base representation of python source code for projects such as pychecker, pyreverse, pylint... Well, actually the development of this library is essentially governed by pylint's needs. It used to be called logilab-astng.
 
 %description -n python3-%{module} -l pl.UTF-8
 Celem tego modułu jest dostarczenie wspólnej bazowej reprezentacji
@@ -84,7 +78,7 @@ rm -rf $RPM_BUILD_ROOT
 	--root=$RPM_BUILD_ROOT
 
 # this file is packaged with python3-logilab-common
-rm $RPM_BUILD_ROOT%{py3_sitescriptdir}/logilab/__init__.py
+#rm $RPM_BUILD_ROOT%{py3_sitescriptdir}/logilab/__init__.py
 %endif
 
 %if %{with python2}
@@ -102,16 +96,16 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog README
-%{py_sitescriptdir}/logilab/astng
-%{py_sitescriptdir}/logilab_astng-%{version}-py*.egg-info
-%{py_sitescriptdir}/logilab_astng-%{version}-py*-nspkg.pth
+%{py_sitescriptdir}/astroid
+%{py_sitescriptdir}/astroid-%{version}-py*.egg-info
+#%{py_sitescriptdir}/astroid-%{version}-py*-nspkg.pth
 %endif
 
 %if %{with python3}
 %files -n python3-%{module}
 %defattr(644,root,root,755)
 %doc ChangeLog README
-%{py3_sitescriptdir}/logilab/astng
-%{py3_sitescriptdir}/logilab_astng-%{version}-py*.egg-info
-%{py3_sitescriptdir}/logilab_astng-%{version}-py*-nspkg.pth
+%{py3_sitescriptdir}/astroid
+%{py3_sitescriptdir}/astroid-%{version}-py*.egg-info
+#%{py3_sitescriptdir}/astroid-%{version}-py*-nspkg.pth
 %endif
