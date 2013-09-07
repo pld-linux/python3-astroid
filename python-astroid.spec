@@ -11,7 +11,7 @@ Version:	1.0.0
 Release:	1
 License:	LGPL v2.1+
 Group:		Development/Languages/Python
-Source0:	https://pypi.python.org/packages/source/a/astroid/astroid-1.0.0.tar.gz
+Source0:	https://pypi.python.org/packages/source/a/astroid/astroid-%{version}.tar.gz
 # Source0-md5:	e74430dfbbe09cd18ef75bd76f95425a
 URL:		http://www.astroid.org/
 %if %{with python2}
@@ -19,20 +19,24 @@ BuildRequires:	python-devel
 BuildRequires:	python-modules >= 1:2.5
 %endif
 %if %{with python3}
-BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.219
 BuildRequires:	python3-2to3
 BuildRequires:	python3-devel
 BuildRequires:	python3-distribute
 BuildRequires:	python3-modules >= 1:3.1
+BuildRequires:	rpm-pythonprov
+BuildRequires:	rpmbuild(macros) >= 1.219
 %endif
-%pyrequires_eq	python-modules
 Requires:	python-logilab-common >= 0.53.0
+Requires:	python-modules
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-The aim of this module is to provide a common base representation of python source code for projects such as pychecker, pyreverse, pylint... Well, actually the development of this library is essentially governed by pylint's needs. It used to be called logilab-astng.
+The aim of this module is to provide a common base representation of
+python source code for projects such as pychecker, pyreverse,
+pylint... Well, actually the development of this library is
+essentially governed by pylint's needs. It used to be called
+logilab-astng.
 
 %description -l pl.UTF-8
 Celem tego modułu jest dostarczenie wspólnej bazowej reprezentacji
@@ -44,11 +48,15 @@ potrzebami pylinta.
 Summary:	Python Abstract Syntax Tree New Generation
 Summary(pl.UTF-8):	Abstrakcyjne drzewa składniowe Pythona nowej generacji
 Group:		Development/Languages/Python
-%pyrequires_eq	python3-modules
 Requires:	python3-logilab-common >= 0.53.0
+Requires:	python3-modules
 
 %description -n python3-%{module}
-The aim of this module is to provide a common base representation of python source code for projects such as pychecker, pyreverse, pylint... Well, actually the development of this library is essentially governed by pylint's needs. It used to be called logilab-astng.
+The aim of this module is to provide a common base representation of
+python source code for projects such as pychecker, pyreverse,
+pylint... Well, actually the development of this library is
+essentially governed by pylint's needs. It used to be called
+logilab-astng.
 
 %description -n python3-%{module} -l pl.UTF-8
 Celem tego modułu jest dostarczenie wspólnej bazowej reprezentacji
