@@ -8,7 +8,7 @@ Summary:	Rebuild a new abstract syntax tree from Python's AST
 Summary(pl.UTF-8):	Tworzenie nowego abstrakcyjnego drzewa składniowego z pythonowego AST
 Name:		python-%{module}
 Version:	1.0.0
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Development/Languages/Python
 Source0:	https://pypi.python.org/packages/source/a/astroid/astroid-%{version}.tar.gz
@@ -28,6 +28,7 @@ BuildRequires:	rpmbuild(macros) >= 1.219
 %endif
 Requires:	python-logilab-common >= 0.60.0
 Requires:	python-modules
+Obsoletes:	python-logilab-astng
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -50,6 +51,7 @@ Summary(pl.UTF-8):	Tworzenie nowego abstrakcyjnego drzewa składniowego z python
 Group:		Development/Languages/Python
 Requires:	python3-logilab-common >= 0.60.0
 Requires:	python3-modules
+Obsoletes:	python3-logilab-astng
 
 %description -n python3-%{module}
 The aim of this module is to provide a common base representation of
