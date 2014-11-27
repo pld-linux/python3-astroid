@@ -15,19 +15,19 @@ Source0:	https://pypi.python.org/packages/source/a/astroid/astroid-%{version}.ta
 # Source0-md5:	2ab96129a977b6eba27765a15d1a9bf2
 URL:		http://www.astroid.org/
 %if %{with python2}
-BuildRequires:	python-devel
-BuildRequires:	python-modules >= 1:2.5
+BuildRequires:	python-devel >= 1:2.7
+BuildRequires:	python-modules >= 1:2.7
 %endif
 %if %{with python3}
-BuildRequires:	python3-2to3
-BuildRequires:	python3-devel
+BuildRequires:	python3-devel >= 1:3.3
 BuildRequires:	python3-distribute
-BuildRequires:	python3-modules >= 1:3.1
+BuildRequires:	python3-modules >= 1:3.3
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
 %endif
 Requires:	python-logilab-common >= 0.60.0
-Requires:	python-modules
+Requires:	python-modules >= 1:2.7
+Requires:	python-six
 Obsoletes:	python-logilab-astng
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -50,7 +50,8 @@ Summary:	Rebuild a new abstract syntax tree from Python's AST
 Summary(pl.UTF-8):	Tworzenie nowego abstrakcyjnego drzewa składniowego z pythonowego AST
 Group:		Development/Languages/Python
 Requires:	python3-logilab-common >= 0.60.0
-Requires:	python3-modules
+Requires:	python3-modules >= 1:3.3
+Requires:	python3-six
 Obsoletes:	python3-logilab-astng
 
 %description -n python3-%{module}
