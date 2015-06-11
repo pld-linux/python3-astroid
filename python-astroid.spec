@@ -7,21 +7,22 @@
 Summary:	Rebuild a new abstract syntax tree from Python's AST
 Summary(pl.UTF-8):	Tworzenie nowego abstrakcyjnego drzewa składniowego z pythonowego AST
 Name:		python-%{module}
-Version:	1.3.2
-Release:	2
+Version:	1.3.6
+Release:	1
 License:	LGPL v2.1+
 Group:		Development/Languages/Python
 Source0:	https://pypi.python.org/packages/source/a/astroid/astroid-%{version}.tar.gz
-# Source0-md5:	2ab96129a977b6eba27765a15d1a9bf2
+# Source0-md5:	0d387f5b2e878f424b95af3bfe44e106
 URL:		http://www.astroid.org/
 %if %{with python2}
 BuildRequires:	python-devel >= 1:2.7
 BuildRequires:	python-modules >= 1:2.7
+BuildRequires:	python-setuptools >= 7.0
 %endif
 %if %{with python3}
 BuildRequires:	python3-devel >= 1:3.3
-BuildRequires:	python3-distribute
 BuildRequires:	python3-modules >= 1:3.3
+BuildRequires:	python3-setuptools >= 7.0
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
 %endif
