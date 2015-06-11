@@ -1,0 +1,35 @@
+diff -dur astroid-1.3.6.orig/astroid/manager.py astroid-1.3.6/astroid/manager.py
+--- astroid-1.3.6.orig/astroid/manager.py	2015-03-14 15:04:09.000000000 +0100
++++ astroid-1.3.6/astroid/manager.py	2015-06-11 13:57:16.000000000 +0200
+@@ -144,7 +144,7 @@
+                 module = self.zip_import_data(filepath)
+                 if module is not None:
+                     return module
+-            elif mp_type in (imp.C_BUILTIN, imp.C_EXTENSION):
++            elif mp_type in (imp.C_BUILTIN, imp.C_EXTENSION, imp.PY_COMPILED):
+                 if mp_type == imp.C_EXTENSION and not self._can_load_extension(modname):
+                     return self._build_stub_module(modname)
+                 try:
+@@ -153,8 +153,6 @@
+                     msg = 'Unable to load module %s (%s)' % (modname, ex)
+                     raise AstroidBuildingException(msg)
+                 return self.ast_from_module(module, modname)
+-            elif mp_type == imp.PY_COMPILED:
+-                raise AstroidBuildingException("Unable to load compiled module %s" % (modname,))
+             if filepath is None:
+                 raise AstroidBuildingException("Unable to load module %s" % (modname,))
+             return self.ast_from_file(filepath, modname, fallback=False)
+diff -dur astroid-1.3.6.orig/astroid/modutils.py astroid-1.3.6/astroid/modutils.py
+--- astroid-1.3.6.orig/astroid/modutils.py	2015-03-09 23:00:27.000000000 +0100
++++ astroid-1.3.6/astroid/modutils.py	2015-06-11 13:57:49.000000000 +0200
+@@ -534,6 +534,10 @@
+         return None, imp.C_BUILTIN
+     elif mtype == imp.PKG_DIRECTORY:
+         mp_filename = _has_init(mp_filename)
++        try:
++            return get_source_file(mp_filename), imp.PY_SOURCE
++        except NoSourceFile:
++            return mp_filename, imp.PY_COMPILED
+         mtype = imp.PY_SOURCE
+     return mp_filename, mtype
+ 

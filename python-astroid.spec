@@ -8,11 +8,12 @@ Summary:	Rebuild a new abstract syntax tree from Python's AST
 Summary(pl.UTF-8):	Tworzenie nowego abstrakcyjnego drzewa składniowego z pythonowego AST
 Name:		python-%{module}
 Version:	1.3.6
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Development/Languages/Python
 Source0:	https://pypi.python.org/packages/source/a/astroid/astroid-%{version}.tar.gz
 # Source0-md5:	0d387f5b2e878f424b95af3bfe44e106
+Patch0:		modules_without_sources.patch
 URL:		http://www.astroid.org/
 %if %{with python2}
 BuildRequires:	python-devel >= 1:2.7
@@ -70,6 +71,8 @@ potrzebami pylinta. Dawniej nazywała się logilab-astng.
 
 %prep
 %setup -q -n %{module}-%{version}
+
+%patch0 -p1
 # drop python 2.5 egg deps
 %{__rm} */*/*/*/*/*py2.5.egg
 
