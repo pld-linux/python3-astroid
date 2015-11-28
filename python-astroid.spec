@@ -79,25 +79,23 @@ potrzebami pylinta. Dawniej nazywała się logilab-astng.
 
 %build
 %if %{with python2}
-%{__python} setup.py build
+%py_build
 %endif
 %if %{with python3}
-%{__python3} setup.py build --build-base=build3
+%py3_build --build-base=build3
 %endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %if %{with python3}
-%{__python3} setup.py build --build-base=build3 install \
+%py3_build --build-base=build3 install \
 	--optimize=2 \
 	--root=$RPM_BUILD_ROOT
 %endif
 
 %if %{with python2}
-%{__python} setup.py install \
-	--optimize=2 \
-	--root=$RPM_BUILD_ROOT
+%py_install
 
 %py_postclean
 %endif
