@@ -26,7 +26,7 @@ BuildRequires:	python3-devel >= 1:3.3
 BuildRequires:	python3-modules >= 1:3.3
 BuildRequires:	python3-setuptools >= 7.0
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.219
+BuildRequires:	rpmbuild(macros) >= 1.710
 %endif
 Requires:	python-logilab-common >= 0.60.0
 Requires:	python-modules >= 1:2.7
