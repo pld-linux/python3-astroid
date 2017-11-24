@@ -14,7 +14,6 @@ Group:		Development/Languages/Python
 #Source0Download: https://pypi.python.org/pypi/astroid/
 Source0:	https://files.pythonhosted.org/packages/source/a/astroid/astroid-%{version}.tar.gz
 # Source0-md5:	6f65e4ea8290ec032320460905afb828
-Patch0:		modules_without_sources.patch
 URL:		http://www.astroid.org/
 %if %{with python2}
 BuildRequires:	python-devel >= 1:2.7
