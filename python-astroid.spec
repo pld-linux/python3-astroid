@@ -7,13 +7,13 @@
 Summary:	An abstract syntax tree for Python 2 with inference support
 Summary(pl.UTF-8):	Abstrakcyjnego drzewa składniowe dla Pythona 2 z obsługą wywodu
 Name:		python-%{module}
-Version:	1.4.1
-Release:	2
+Version:	1.5.3
+Release:	1
 License:	LGPL v2.1+
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.python.org/pypi/astroid/
-Source0:	https://pypi.python.org/packages/source/a/astroid/astroid-%{version}.tar.gz
-# Source0-md5:	a75975473d7d1d381dbd6f8370251f1a
+Source0:	https://files.pythonhosted.org/packages/source/a/astroid/astroid-%{version}.tar.gz
+# Source0-md5:	6f65e4ea8290ec032320460905afb828
 Patch0:		modules_without_sources.patch
 URL:		http://www.astroid.org/
 %if %{with python2}
@@ -34,6 +34,9 @@ Requires:	python-six
 Obsoletes:	python-logilab-astng
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+# current Python 3.x provides all these
+%define		_noautoreq	python3egg.backports.functools-lru-cache python3egg.enum34 python3egg.singledispatch
 
 %description
 The aim of this module is to provide a common base representation of
@@ -73,7 +76,6 @@ potrzebami pylinta. Dawniej nazywała się logilab-astng.
 %prep
 %setup -q -n %{module}-%{version}
 
-%patch0 -p1
 # drop python 2.5 egg deps
 %{__rm} */*/*/*/*/*py2.5.egg
 
@@ -104,7 +106,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog README
+%doc ChangeLog README.rst
 %{py_sitescriptdir}/astroid
 %{py_sitescriptdir}/astroid-%{version}-py*.egg-info
 %endif
@@ -112,7 +114,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python3}
 %files -n python3-%{module}
 %defattr(644,root,root,755)
-%doc ChangeLog README
+%doc ChangeLog README.rst
 %{py3_sitescriptdir}/astroid
 %{py3_sitescriptdir}/astroid-%{version}-py*.egg-info
 %endif
