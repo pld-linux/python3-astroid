@@ -8,7 +8,7 @@ Summary:	An abstract syntax tree for Python 2 with inference support
 Summary(pl.UTF-8):	Abstrakcyjnego drzewa składniowe dla Pythona 2 z obsługą wywodu
 Name:		python-%{module}
 Version:	1.5.3
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.python.org/pypi/astroid/
@@ -27,7 +27,6 @@ BuildRequires:	python3-setuptools >= 7.0
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.710
 %endif
-Requires:	python-logilab-common >= 0.60.0
 Requires:	python-modules >= 1:2.7
 Requires:	python-six
 Obsoletes:	python-logilab-astng
@@ -54,7 +53,6 @@ potrzebami pylinta. Dawniej nazywała się logilab-astng.
 Summary:	An abstract syntax tree for Python 3 with inference support
 Summary(pl.UTF-8):	Abstrakcyjnego drzewa składniowe dla Pythona 3 z obsługą wywodu
 Group:		Development/Languages/Python
-Requires:	python3-logilab-common >= 0.60.0
 Requires:	python3-modules >= 1:3.3
 Requires:	python3-six
 Obsoletes:	python3-logilab-astng
