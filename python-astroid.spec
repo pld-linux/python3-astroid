@@ -18,11 +18,13 @@ URL:		http://www.astroid.org/
 %if %{with python2}
 BuildRequires:	python-devel >= 1:2.7
 BuildRequires:	python-modules >= 1:2.7
+BuildRequires:	python-pytest-runner
 BuildRequires:	python-setuptools >= 7.0
 %endif
 %if %{with python3}
 BuildRequires:	python3-devel >= 1:3.3
 BuildRequires:	python3-modules >= 1:3.3
+BuildRequires:	python3-pytest-runner
 BuildRequires:	python3-setuptools >= 7.0
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.710
