@@ -7,13 +7,13 @@
 Summary:	An abstract syntax tree for Python 2 with inference support
 Summary(pl.UTF-8):	Abstrakcyjnego drzewa składniowe dla Pythona 2 z obsługą wywodu
 Name:		python-%{module}
-Version:	2.0.4
+Version:	2.2.5
 Release:	1
 License:	LGPL v2.1+
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.python.org/pypi/astroid/
 Source0:	https://files.pythonhosted.org/packages/source/a/astroid/astroid-%{version}.tar.gz
-# Source0-md5:	eb1c4312019809696634b33d639eee9d
+# Source0-md5:	0e686c4f817ddcd3be18b31df644c3bc
 URL:		http://www.astroid.org/
 %if %{with python2}
 BuildRequires:	python-devel >= 1:2.7
