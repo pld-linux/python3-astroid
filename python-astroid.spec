@@ -8,12 +8,13 @@ Summary:	An abstract syntax tree for Python 2 with inference support
 Summary(pl.UTF-8):	Abstrakcyjnego drzewa składniowe dla Pythona 2 z obsługą wywodu
 Name:		python-%{module}
 Version:	2.3.1
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.python.org/pypi/astroid/
 Source0:	https://files.pythonhosted.org/packages/source/a/astroid/astroid-%{version}.tar.gz
 # Source0-md5:	006fa7ae21f6b9ca4bcd92f64f94d0e5
+Patch0:		%{name}-deps.patch
 URL:		https://github.com/PyCQA/astroid
 %if %{with python2}
 BuildRequires:	python-devel >= 1:2.7
@@ -74,6 +75,7 @@ potrzebami pylinta. Dawniej nazywała się logilab-astng.
 
 %prep
 %setup -q -n %{module}-%{version}
+%patch0 -p1
 
 # drop python 2.5 egg deps
 %{__rm} */*/*/*/*/*py2.5.egg
