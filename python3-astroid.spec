@@ -7,7 +7,7 @@ Summary:	An abstract syntax tree for Python 3 with inference support
 Summary(pl.UTF-8):	Abstrakcyjnego drzewa składniowe dla Pythona 3 z obsługą wywodu
 Name:		python3-%{module}
 Version:	2.3.2
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/astroid/
