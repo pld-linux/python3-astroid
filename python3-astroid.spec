@@ -6,13 +6,13 @@
 Summary:	An abstract syntax tree for Python 3 with inference support
 Summary(pl.UTF-8):	Abstrakcyjnego drzewa składniowe dla Pythona 3 z obsługą wywodu
 Name:		python3-%{module}
-Version:	2.3.2
-Release:	2
+Version:	2.3.3
+Release:	1
 License:	LGPL v2.1+
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/astroid/
 Source0:	https://files.pythonhosted.org/packages/source/a/astroid/astroid-%{version}.tar.gz
-# Source0-md5:	b2cd5c0383ff33c1410e737c2607aa7a
+# Source0-md5:	5f3d73d82d1753b59bb49a6bc6046dee
 Patch0:		%{name}-deps.patch
 URL:		https://github.com/PyCQA/astroid
 BuildRequires:	python3-devel >= 1:3.5
@@ -32,12 +32,6 @@ BuildRequires:	python3-wrapt >= 1.11
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 Requires:	python3-modules >= 1:3.5
-%if "%{py3_ver}" < "3.8"
-# not detected by rpm from rule:
-# [:implementation_name == "cpython" and python_version < "3.8"]
-Requires:	python3-typed_ast >= 1.4.0
-Requires:	python3-typed_ast < 1.5
-%endif
 Obsoletes:	python3-logilab-astng
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)

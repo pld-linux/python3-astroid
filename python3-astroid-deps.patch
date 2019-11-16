@@ -1,17 +1,17 @@
-diff -bur astroid-2.3.1.orig/astroid/__pkginfo__.py astroid-2.3.1/astroid/__pkginfo__.py
---- astroid-2.3.1.orig/astroid/__pkginfo__.py	2019-09-30 10:04:18.000000000 +0200
-+++ astroid-2.3.1/astroid/__pkginfo__.py	2019-10-13 00:36:00.964206099 +0200
-@@ -22,9 +22,9 @@
+--- astroid-2.3.3/astroid/__pkginfo__.py.orig	2019-11-16 17:17:15.331282360 +0100
++++ astroid-2.3.3/astroid/__pkginfo__.py	2019-11-16 17:24:15.249007470 +0100
+@@ -22,10 +22,10 @@
  
  extras_require = {}
  install_requires = [
 -    "lazy_object_proxy==1.4.*",
--    "six==1.12",
+-    "six~=1.12",
 -    "wrapt==1.11.*",
+-    'typed-ast>=1.4.0,<1.5;implementation_name== "cpython" and python_version<"3.8"',
 +    "lazy_object_proxy>=1.4",
 +    "six>=1.12",
 +    "wrapt>=1.11",
-     'typed-ast>=1.4.0,<1.5;implementation_name== "cpython" and python_version<"3.8"',
++    'typed-ast>=1.4.0,<1.5;python_version<"3.8"',
  ]
  
-Only in astroid-2.3.1/astroid: __pkginfo__.py~
+ # pylint: disable=redefined-builtin; why license is a builtin anyway?
