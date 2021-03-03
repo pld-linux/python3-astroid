@@ -1,28 +1,11 @@
 --- astroid-2.3.3/astroid/__pkginfo__.py.orig	2019-11-16 17:17:15.331282360 +0100
 +++ astroid-2.3.3/astroid/__pkginfo__.py	2019-11-16 17:24:15.249007470 +0100
-@@ -22,10 +22,10 @@
- 
- extras_require = {}
+@@ -22,7 +22,7 @@
  install_requires = [
--    "lazy_object_proxy==1.4.*",
--    "six~=1.12",
--    "wrapt==1.11.*",
+     "lazy_object_proxy>=1.4.0",
+     "wrapt>=1.11,<1.13",
 -    'typed-ast>=1.4.0,<1.5;implementation_name== "cpython" and python_version<"3.8"',
-+    "lazy_object_proxy>=1.4",
-+    "six>=1.12",
-+    "wrapt>=1.11",
-+    'typed-ast>=1.4.0,<1.5;python_version<"3.8"',
++    "typed-ast>=1.4.0,<1.5",
  ]
  
  # pylint: disable=redefined-builtin; why license is a builtin anyway?
---- astroid-2.3.3/setup.py.orig	2019-11-06 19:41:21.000000000 +0100
-+++ astroid-2.3.3/setup.py	2020-03-29 08:34:25.522049686 +0200
-@@ -39,7 +39,7 @@
-         author=author,
-         author_email=author_email,
-         url=web,
--        python_requires=">=3.5.*",
-+        python_requires=">=3.5.0",
-         install_requires=install_requires,
-         extras_require=extras_require,
-         packages=find_packages(exclude=["astroid.tests"]) + ["astroid.brain"],
