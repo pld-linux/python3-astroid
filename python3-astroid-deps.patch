@@ -1,11 +1,13 @@
---- astroid-2.3.3/astroid/__pkginfo__.py.orig	2019-11-16 17:17:15.331282360 +0100
-+++ astroid-2.3.3/astroid/__pkginfo__.py	2019-11-16 17:24:15.249007470 +0100
-@@ -22,7 +22,7 @@
- install_requires = [
-     "lazy_object_proxy>=1.4.0",
-     "wrapt>=1.11,<1.13",
--    'typed-ast>=1.4.0,<1.5;implementation_name== "cpython" and python_version<"3.8"',
-+    "typed-ast>=1.4.0,<1.5",
- ]
+--- astroid-2.9.0/setup.cfg.orig	2021-11-21 18:16:40.395143700 +0100
++++ astroid-2.9.0/setup.cfg	2021-12-08 10:07:08.268285408 +0100
+@@ -39,8 +39,8 @@
+ 	lazy_object_proxy>=1.4.0
+ 	wrapt>=1.11,<1.14
+ 	setuptools>=20.0
+-	typed-ast>=1.4.0,<2.0;implementation_name=="cpython" and python_version<"3.8"
+-	typing-extensions>=3.10;python_version<"3.10"
++	typed-ast>=1.4.0,<2.0
++	typing-extensions>=3.10
+ python_requires = ~=3.6
  
- # pylint: disable=redefined-builtin; why license is a builtin anyway?
+ [options.packages.find]

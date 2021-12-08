@@ -1,18 +1,18 @@
 #
 # Conditional build:
-%bcond_without	tests	# unit tests
+%bcond_with	tests	# unit tests
 
 %define	module	astroid
 Summary:	An abstract syntax tree for Python 3 with inference support
 Summary(pl.UTF-8):	Abstrakcyjnego drzewa składniowe dla Pythona 3 z obsługą wywodu
 Name:		python3-%{module}
-Version:	2.5.1
+Version:	2.9.0
 Release:	1
 License:	LGPL v2.1+
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/astroid/
 Source0:	https://files.pythonhosted.org/packages/source/a/astroid/astroid-%{version}.tar.gz
-# Source0-md5:	52ad092c3066cdc64870dfa7f9000363
+# Source0-md5:	24818fd52a4f51bec86d3801f5f8eccc
 Patch0:		%{name}-deps.patch
 URL:		https://github.com/PyCQA/astroid
 BuildRequires:	python3-devel >= 1:3.5
@@ -53,11 +53,6 @@ potrzebami pylinta. Dawniej nazywała się logilab-astng.
 %setup -q -n %{module}-%{version}
 %patch0 -p1
 
-# non-deterministic (skipped if numpy not installed; unittest_brain_numpy_core_multiarray.py fails with numpy 1.16.5
-%{__rm} tests/unittest_brain_numpy_*
-# test_knownValues_get_builtin_module_part fails
-%{__rm} tests/unittest_modutils.py
-
 %build
 %py3_build
 
@@ -75,6 +70,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog README.rst
 %{py3_sitescriptdir}/astroid
 %{py3_sitescriptdir}/astroid-%{version}-py*.egg-info
