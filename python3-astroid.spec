@@ -18,7 +18,7 @@ URL:		https://github.com/PyCQA/astroid
 BuildRequires:	python3-devel >= 1:3.5
 BuildRequires:	python3-modules >= 1:3.5
 BuildRequires:	python3-pytest-runner
-BuildRequires:	python3-setuptools >= 7.0
+BuildRequires:	python3-setuptools >= 1:7.0
 %if %{with tests}
 BuildRequires:	python3-lazy-object-proxy >= 1.4
 BuildRequires:	python3-pytest
