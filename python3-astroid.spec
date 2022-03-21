@@ -1,38 +1,40 @@
 #
 # Conditional build:
-%bcond_with	tests	# unit tests
+%bcond_with	tests	# unit tests (not included in sdist)
 
 %define	module	astroid
 Summary:	An abstract syntax tree for Python 3 with inference support
 Summary(pl.UTF-8):	Abstrakcyjnego drzewa składniowe dla Pythona 3 z obsługą wywodu
 Name:		python3-%{module}
-Version:	2.9.0
+# keep version compatible with pylint.spec (2.9.x for 2.12.x)
+Version:	2.9.3
 Release:	1
 License:	LGPL v2.1+
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/astroid/
 Source0:	https://files.pythonhosted.org/packages/source/a/astroid/astroid-%{version}.tar.gz
-# Source0-md5:	24818fd52a4f51bec86d3801f5f8eccc
-Patch0:		%{name}-deps.patch
+# Source0-md5:	5194ffb97eafaff6afbe1869606b7d4d
 URL:		https://github.com/PyCQA/astroid
-BuildRequires:	python3-devel >= 1:3.5
-BuildRequires:	python3-modules >= 1:3.5
+BuildRequires:	python3-devel >= 1:3.6.2
+BuildRequires:	python3-modules >= 1:3.6.2
 BuildRequires:	python3-pytest-runner
-BuildRequires:	python3-setuptools >= 1:7.0
+BuildRequires:	python3-setuptools >= 1:20.0
 %if %{with tests}
 BuildRequires:	python3-lazy-object-proxy >= 1.4
 BuildRequires:	python3-pytest
 BuildRequires:	python3-six >= 1.12
 %if "%{py3_ver}" < "3.8"
 BuildRequires:	python3-typed_ast >= 1.4.0
-BuildRequires:	python3-typed_ast < 1.5
+BuildRequires:	python3-typed_ast < 2.0
 %endif
+BuildRequires:	python3-typing_extensions >= 3.10
 BuildRequires:	python3-wrapt >= 1.11
+BuildRequires:	python3-wrapt < 1.14
 %endif
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
-Requires:	python3-modules >= 1:3.5
-Obsoletes:	python3-logilab-astng
+Requires:	python3-modules >= 1:3.6.2
+Obsoletes:	python3-logilab-astng < 1
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -51,12 +53,12 @@ potrzebami pylinta. Dawniej nazywała się logilab-astng.
 
 %prep
 %setup -q -n %{module}-%{version}
-%patch0 -p1
 
 %build
 %py3_build
 
 %if %{with tests}
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
 %{__python3} -m pytest tests
 %endif
 
