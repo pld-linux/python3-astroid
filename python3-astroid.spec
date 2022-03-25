@@ -8,7 +8,7 @@ Summary(pl.UTF-8):	Abstrakcyjnego drzewa składniowe dla Pythona 3 z obsługą w
 Name:		python3-%{module}
 # keep version compatible with pylint.spec (2.9.x for 2.12.x)
 Version:	2.9.3
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/astroid/
