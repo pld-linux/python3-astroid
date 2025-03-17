@@ -6,18 +6,19 @@
 Summary:	An abstract syntax tree for Python 3 with inference support
 Summary(pl.UTF-8):	Abstrakcyjnego drzewa składniowe dla Pythona 3 z obsługą wywodu
 Name:		python3-%{module}
-# keep version compatible with pylint.spec (2.12.x for pylint 2.15.x)
-Version:	2.12.9
-Release:	3
+# keep version compatible with pylint.spec (3.3.x for pylint 3.3.x)
+Version:	3.3.9
+Release:	1
 License:	LGPL v2.1+
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/astroid/
 Source0:	https://files.pythonhosted.org/packages/source/a/astroid/astroid-%{version}.tar.gz
-# Source0-md5:	5aba64ba978ad52fc19e80c0a93ff223
+# Source0-md5:	ca20a247e15cfcafcee493bab9a50975
 URL:		https://github.com/PyCQA/astroid
 BuildRequires:	python3-devel >= 1:3.7.2
 BuildRequires:	python3-modules >= 1:3.7.2
-BuildRequires:	python3-setuptools >= 1:62.6
+BuildRequires:	python3-build
+BuildRequires:	python3-installer
 %if %{with tests}
 BuildRequires:	python3-lazy-object-proxy >= 1.4
 BuildRequires:	python3-pytest
@@ -29,12 +30,6 @@ BuildRequires:	python3-typed_ast < 2.0
 %if "%{_ver_lt '%{py3_ver}' '3.10'}" == "1"
 BuildRequires:	python3-typing_extensions >= 3.10
 %endif
-%if "%{_ver_lt '%{py3_ver}' '3.11'}" == "1"
-BuildRequires:	python3-wrapt >= 1.11
-%else
-BuildRequires:	python3-wrapt >= 1.14
-%endif
-BuildRequires:	python3-wrapt < 2
 %endif
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
@@ -60,7 +55,7 @@ potrzebami pylinta. Dawniej nazywała się logilab-astng.
 %setup -q -n %{module}-%{version}
 
 %build
-%py3_build
+%py3_build_pyproject
 
 %if %{with tests}
 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
@@ -71,7 +66,7 @@ PYTHONPATH=$(pwd) \
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%py3_install
+%py3_install_pyproject
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -80,4 +75,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc CONTRIBUTORS.txt README.rst
 %{py3_sitescriptdir}/astroid
-%{py3_sitescriptdir}/astroid-%{version}-py*.egg-info
+%{py3_sitescriptdir}/astroid-%{version}.dist-info
